@@ -24,10 +24,14 @@ export default function Home() {
     const formData = new FormData();
     formData.append("file", file);
 
-    let apiEndpoint = "/api/convert"; // 기본값: 이미지 변환
+    let apiEndpoint = "/api/convert-"; // 기본값: api 엔드포인트
+
+    if (file.type.startsWith("image/")) {
+      apiEndpoint += "image"; // 이미지 파일인 경우
+    }
 
     if (file.type.startsWith("video/")) {
-      apiEndpoint += "-video"; // 비디오 파일인 경우
+      apiEndpoint += "video"; // 비디오 파일인 경우
     }
 
     try {
@@ -37,7 +41,7 @@ export default function Home() {
       });
 
       if (!res.ok) {
-        throw new Error("파일 변환에 실패했습니다.");
+        throw new Error("Failed to convert file.");
       }
 
       const data = await res.json();
@@ -56,14 +60,15 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="container mx-auto">
-        <h1 className="text-2xl font-bold mb-4">Image Converter</h1>
-
-        <form onSubmit={handleSubmit} className="mb-4">
+        <div className="flex justify-center">
+          <h1 className="text-4xl font-bold mb-4">All You Can Convert</h1>
+        </div>
+        <form onSubmit={handleSubmit} className="p-10">
           <input
             type="file"
             accept="image/*"
             onChange={handleFileChange}
-            className="mb-4"
+            className="p-10"
           />
           <button
             type="submit"
@@ -75,7 +80,7 @@ export default function Home() {
 
         {message && <p className="mb-4">{message}</p>}
 
-        {convertedFile && (
+        {/*  {convertedFile ? (
           <div>
             <h2 className="text-xl font-semibold">Converted Image:</h2>
             <Image
@@ -86,13 +91,20 @@ export default function Home() {
               height={500}
             />
           </div>
+        ) : (
+          <div></div>
         )}
-
+*/}
         <div>
           <h1>Upload Video file to convert</h1>
           <form onSubmit={handleSubmit}>
             <input type="file" onChange={handleFileChange} accept="video/*" />
-            <button type="submit">Convert Video</button>
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+              Convert Video
+            </button>
           </form>
         </div>
       </div>
