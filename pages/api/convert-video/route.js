@@ -8,7 +8,6 @@ import ffmpegPath from "ffmpeg-static";
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-//const ffmpegpath = ffmpegPath;
 
 export const config = {
   api: {
