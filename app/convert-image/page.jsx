@@ -27,7 +27,6 @@ const Page = () => {
 
     const formData = new FormData();
     formData.append("file", file);
-    //formData.append("format", format);
 
     try {
       const res = await fetch(`/api/convert-image/route?format=${format}`, {
@@ -73,9 +72,12 @@ const Page = () => {
               type="file"
               accept="image/*"
               onChange={handleFileChange}
-              className="p-10 m-10 border-2 border-white rounded"
+              className="p-10 m-10 border-2 border-white rounded font-bold text-lg"
+              placeholder="Select or drag any file from your device"
             />
-            <div className="flex justify-center space-x-3">
+
+            {file && <div className="flex justify-center space-x-3">
+
               <select
                 value={format}
                 onChange={handleFormatChange}
@@ -100,7 +102,7 @@ const Page = () => {
               >
                 Convert
               </button>
-            </div>
+            </div>}
           </form>
 
           {downloadURL && (
