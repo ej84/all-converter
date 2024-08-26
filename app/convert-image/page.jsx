@@ -88,9 +88,15 @@ const Page = () => {
                     onChange={handleFormatChange}
                     className="min-w-10 px-5 py-3 bg-white text-fuchsia-900 font-bold rounded"
                   >
-                    <option value="jpeg">JPG</option>
-                    <option value="png">PNG</option>
-                    <option value="webp">WEBP</option>
+                    <option value="jpeg" className="font-bold">
+                      JPG
+                    </option>
+                    <option value="png" className="font-bold">
+                      PNG
+                    </option>
+                    <option value="webp" className="font-bold">
+                      WEBP
+                    </option>
                   </select>
                   <select
                     value={newFileSize}
