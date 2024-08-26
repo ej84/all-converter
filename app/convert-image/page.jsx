@@ -86,7 +86,7 @@ const Page = () => {
                   <select
                     value={format}
                     onChange={handleFormatChange}
-                    className="min-w-10 px-5 py-3 bg-white text-violet-700 rounded"
+                    className="min-w-10 px-5 py-3 bg-white text-fuchsia-900 font-bold rounded"
                   >
                     <option value="jpeg">JPG</option>
                     <option value="png">PNG</option>
@@ -97,7 +97,7 @@ const Page = () => {
                     onChange={(e) => {
                       setNewFileSize(e.target.value);
                     }}
-                    className="min-w-10 px-4 py-3 bg-white text-violet-700 rounded"
+                    className="min-w-10 px-4 py-3 bg-white text-violet-900 font-bold rounded"
                   >
                     <option value="">Select size (optional)</option>
                     <option value="1920x1080">1920x1080 (Full HD)</option>
@@ -108,7 +108,7 @@ const Page = () => {
                 <div className="flex justify-center p-24 m-8">
                   <button
                     type="submit"
-                    className="px-20 py-10 bg-white text-violet-700 rounded"
+                    className="px-20 py-10 bg-white text-indigo-700 rounded"
                   >
                     <p className="text-3xl font-bold">Convert File</p>
                   </button>
