@@ -1,11 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import FileUploadButton from "../components/FileUploadButton";
 
 const Page = () => {
   const [file, setFile] = useState(null);
-  const [convertedFile, setConvertedFile] = useState(null);
+  const [newFile, setNewFile] = useState(null);
   const [format, setFormat] = useState("jpeg");
+  const [newFileSize, setNewFileSize] = useState("800x600");
   const [downloadURL, setDownloadURL] = useState("");
   const [message, setMessage] = useState("");
 
@@ -27,6 +29,8 @@ const Page = () => {
 
     const formData = new FormData();
     formData.append("file", file);
+    formData.append("width", newFileSize.split("x")[0]);
+    formData.append("height", newFileSize.split("x")[1]);
 
     try {
       const res = await fetch(`/api/convert-image/route?format=${format}`, {
@@ -51,7 +55,7 @@ const Page = () => {
       setDownloadURL(data.url);
 
       if (res.ok) {
-        setConvertedFile(data.filePath);
+        setNewFile(data.filePath);
         setMessage(data.message);
         setDownloadURL(data.downloadUrl);
       } else {
@@ -76,33 +80,41 @@ const Page = () => {
               placeholder="Select or drag any file from your device"
             />
 
-            {file && <div className="flex justify-center space-x-3">
-
-              <select
-                value={format}
-                onChange={handleFormatChange}
-                className="min-w-10 p-3 bg-violet-500 rounded"
-              >
-                <option value="jpeg">JPG</option>
-                <option value="png">PNG</option>
-                <option value="webp">WEBP</option>
-              </select>
-              <select
-                value={format}
-                onChange={handleFormatChange}
-                className="min-w-10 px-4 py-3 bg-violet-500 rounded"
-              >
-                <option value="jpeg">Size 1</option>
-                <option value="png">Size 2</option>
-                <option value="webp">Size 3</option>
-              </select>
-              <button
-                type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded"
-              >
-                Convert
-              </button>
-            </div>}
+            {file && (
+              <>
+                <div className="flex justify-center space-x-3">
+                  <select
+                    value={format}
+                    onChange={handleFormatChange}
+                    className="min-w-10 px-5 py-3 bg-white text-violet-700 rounded"
+                  >
+                    <option value="jpeg">JPG</option>
+                    <option value="png">PNG</option>
+                    <option value="webp">WEBP</option>
+                  </select>
+                  <select
+                    value={newFileSize}
+                    onChange={(e) => {
+                      setNewFileSize(e.target.value);
+                    }}
+                    className="min-w-10 px-4 py-3 bg-white text-violet-700 rounded"
+                  >
+                    <option value="">Select size (optional)</option>
+                    <option value="1920x1080">1920x1080 (Full HD)</option>
+                    <option value="1280x720">1280x720 (HD)</option>
+                    <option value="800x600">800x600 (Standard)</option>
+                  </select>
+                </div>
+                <div className="flex justify-center p-24 m-8">
+                  <button
+                    type="submit"
+                    className="px-20 py-10 bg-white text-violet-700 rounded"
+                  >
+                    <p className="text-3xl font-bold">Convert File</p>
+                  </button>
+                </div>
+              </>
+            )}
           </form>
 
           {downloadURL && (
@@ -113,11 +125,11 @@ const Page = () => {
 
           {message && <p className="mb-4">{message}</p>}
 
-          {convertedFile ? (
+          {newFile ? (
             <div>
               <h2 className="text-xl font-semibold">Converted Image:</h2>
               <Image
-                src={convertedFile}
+                src={newFile}
                 alt="Converted"
                 className="mt-4"
                 width={500}

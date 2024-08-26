@@ -35,8 +35,14 @@ export default async function handler(req, res) {
     }
 
     try {
+      const { width, height } = req.body;
+      const intWidth = parseInt(width);
+      const intHeight = parseInt(height);
       // sharp에서 format을 동적으로 적용합니다.
-      const buffer = await sharp(req.file.buffer).toFormat(format).toBuffer();
+      //const buffer = await sharp(req.file.buffer).toFormat(format).toBuffer();
+      const buffer = await sharp(req.file.buffer)
+        .resize(intWidth || null, intHeight || null) // 입력된 크기로 이미지 크기 조정
+        .toBuffer();
 
       const fileName = `converted-${Date.now()}.${format}`;
       const outputPath = path.join(
