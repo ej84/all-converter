@@ -40,9 +40,27 @@ export default async function handler(req, res) {
       const intHeight = parseInt(height);
       // sharp에서 format을 동적으로 적용합니다.
       //const buffer = await sharp(req.file.buffer).toFormat(format).toBuffer();
-      const buffer = await sharp(req.file.buffer)
-        .resize(intWidth || null, intHeight || null) // 입력된 크기로 이미지 크기 조정
-        .toBuffer();
+      let transformer = sharp(req.file.buffer).resize(
+        intWidth || null,
+        intHeight || null
+      ); // 입력된 크기로 이미지 크기 조정
+
+      // 선택한 포맷에 따라 추가 설정을 적용합니다.
+      switch (format) {
+        case "jpeg":
+          transformer = transformer.jpeg({ quality: 90, progressive: true }); // 고화질 JPEG 설정
+          break;
+        case "png":
+          transformer = transformer.png({ compressionLevel: 9 }); // 고화질 PNG 설정
+          break;
+        case "webp":
+          transformer = transformer.webp({ quality: 90, lossless: true }); // 고화질 WebP 설정
+          break;
+        default:
+          break;
+      }
+
+      const buffer = await transformer.toBuffer();
 
       const fileName = `converted-${Date.now()}.${format}`;
       const outputPath = path.join(

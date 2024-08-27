@@ -105,7 +105,6 @@ const Page = () => {
                     }}
                     className="min-w-10 px-4 py-3 bg-white text-violet-900 font-bold rounded"
                   >
-                    <option value="">Select size (optional)</option>
                     <option value="1920x1080">1920x1080 (Full HD)</option>
                     <option value="1280x720">1280x720 (HD)</option>
                     <option value="800x600">800x600 (Standard)</option>
