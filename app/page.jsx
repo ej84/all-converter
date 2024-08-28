@@ -1,7 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
-import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFileImage,
+  faFileVideo,
+  faFileAudio,
+  faFilePdf,
+} from "@fortawesome/free-regular-svg-icons";
 import Link from "next/link";
 //import CloudConvert from "cloudconvert";
 
@@ -12,22 +18,47 @@ export default function Home() {
         <div className="flex justify-center">
           <h1 className="text-4xl font-bold mb-4">All You Can Convert</h1>
         </div>
+
         <div className="flex justify-center p-32 space-x-8">
-          <button className="btn1">
-            <Link href="/convert-image">Image</Link>
-          </button>
+          <Link href="/convert-image" className="btn1">
+            <div className="flex items-center">
+              <span className="pr-5">
+                <FontAwesomeIcon icon={faFileImage} size="2x" />
+              </span>
+              <div>
+                <p className="text-2xl">Convert Image</p>
+                <p>(JPEG, PNG, WEBP)</p>
+              </div>
+            </div>
+          </Link>
 
-          <button className="btn1">
-            <Link href="/convert-video">Video</Link>
-          </button>
+          <Link href="/convert-video" className="btn1">
+            <div className="flex items-center">
+              <span className="pr-5">
+                <FontAwesomeIcon icon={faFileVideo} size="2x" />
+              </span>
+              <div>
+                <p className="text-2xl">Convert Video</p>
+                <p>(MP4, AVI, WAV)</p>
+              </div>
+            </div>
+          </Link>
 
-          <button className="btn1">
-            <Link href="/convert-document">Document</Link>
-          </button>
+          <Link href="/convert-document" className="btn1">
+            <div className="flex items-center">
+              <span className="pr-5">
+                <FontAwesomeIcon icon={faFilePdf} size="2x" />
+              </span>
+              <div>
+                <p className="text-2xl">Convert Document</p>
+                <p>(PDF, DOCX, CSV)</p>
+              </div>
+            </div>
+          </Link>
         </div>
         <div className="flex justify-center">
           <h2 className="text-xl font-semibold">
-            You can convert your files freely!
+            Choose the converter you need
           </h2>
         </div>
       </div>
