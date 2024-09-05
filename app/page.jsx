@@ -57,9 +57,26 @@ export default function Home() {
           </Link>
         </div>
         <div className="flex justify-center">
-          <h2 className="text-xl font-semibold">
-            Choose the converter you need
-          </h2>
+          <div className="grid grid-cols-3 text-center">
+            <div className="px-48 py-20 mr-5 my-5 outline outline-white">
+              <p>box 1</p>
+            </div>
+            <div className="px-48 py-20 mr-5 my-5 outline outline-white">
+              <p>box 2</p>
+            </div>
+            <div className="px-48 py-20 mr-5 my-5 outline outline-white">
+              <p>box 3</p>
+            </div>
+            <div className="px-48 py-20 mr-5 my-5 outline outline-white">
+              <p>box 4</p>
+            </div>
+            <div className="px-48 py-20 mr-5 my-5 outline outline-white">
+              <p>box 5</p>
+            </div>
+            <div className="px-48 py-20 mr-5 my-5 outline outline-white">
+              <p>box 6</p>
+            </div>
+          </div>
         </div>
       </div>
     </main>
