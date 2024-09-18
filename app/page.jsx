@@ -28,7 +28,7 @@ export default function Home() {
               <div>
                 <p className="text-xl text-left">Image Converter</p>
                 <p className="text-base">
-                  You can convert your image file to any format you want.
+                  Convert your image file to any format you want.
                 </p>
               </div>
             </div>
