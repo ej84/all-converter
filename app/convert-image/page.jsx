@@ -97,6 +97,9 @@ const Page = () => {
                     <option value="webp" className="font-bold">
                       WEBP
                     </option>
+                    <option value="gif" className="font-bold">
+                      GIF
+                    </option>
                   </select>
                   <select
                     value={newFileSize}

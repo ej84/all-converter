@@ -22,7 +22,7 @@ export default async function handler(req, res) {
   const { format } = req.query; // 프론트엔드에서 보내는 'format' 매개변수
 
   // 지원하는 파일 형식들을 정의합니다.
-  const validFormats = ["jpeg", "png", "webp"];
+  const validFormats = ["jpeg", "png", "webp", "gif", "svg"];
 
   // format 값이 유효한지 확인합니다.
   if (!validFormats.includes(format)) {
