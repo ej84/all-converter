@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import FileUploadButton from "../components/FileUploadButton";
+//import FileUploadButton from "../components/FileUploadButton";
 
 const Page = () => {
   const [file, setFile] = useState(null);
