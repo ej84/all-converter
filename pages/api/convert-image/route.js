@@ -63,23 +63,27 @@ export default async function handler(req, res) {
       const buffer = await transformer.toBuffer();
 
       const fileName = `converted-${Date.now()}.${format}`;
-      const outputPath = path.join(
+      /*const outputPath = path.join(
         process.cwd(),
         "public",
         "uploads",
         fileName
       );
 
-      await fs.writeFile(outputPath, buffer);
+      await fs.writeFile(outputPath, buffer);*/
 
       // 파일 경로를 사용하여 다운로드 링크를 생성합니다.
-      const downloadUrl = `${req.headers.origin}/uploads/${fileName}`;
+      /*const downloadUrl = `${req.headers.origin}/uploads/${fileName}`;
 
       res.status(200).json({
         message: "File converted successfully",
-        //filePath: `/uploads/${fileName}`,
+        filePath: `/uploads/${fileName}`,
         downloadUrl: downloadUrl,
-      });
+      });*/
+
+      res.setHeader("Content-Disposition", `attachment; filename=${fileName}`);
+      res.setHeader("Content-Type", "application/octet-stream");
+      res.status(200).send(buffer);
     } catch (error) {
       res.status(500).json({ error: "Image conversion failed" });
     }
