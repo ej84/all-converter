@@ -77,7 +77,7 @@ export default async function handler(req, res) {
 
       res.status(200).json({
         message: "File converted successfully",
-        filePath: `/uploads/${fileName}`,
+        //filePath: `/uploads/${fileName}`,
         downloadUrl: downloadUrl,
       });
     } catch (error) {
