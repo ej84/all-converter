@@ -136,13 +136,14 @@ const Page = () => {
           {newFile ? (
             <div>
               <h2 className="text-xl font-semibold">Converted Image:</h2>
-              <Image
+              {/*<Image
                 src={newFile}
                 alt="Converted"
                 className="mt-4"
                 width={500}
                 height={500}
-              />
+              />*/}
+              <img src={`/api/download?file=${fileName}`} alt="Converted image" className="mt-5" width={400} height={400} />
             </div>
           ) : (
             <div></div>
