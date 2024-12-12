@@ -147,8 +147,8 @@ const Page = () => {
                 src={`/api/download?file=${newFile}`}
                 alt="Converted image"
                 className="mt-5"
-                width={400}
-                height={400}
+                width={500}
+                height={500}
               />
             </div>
           ) : (
