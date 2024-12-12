@@ -34,7 +34,8 @@ body {
   --tw-gradient-to: #2563eb var(--tw-gradient-to-position);
   border-width: 3px;
   text-align: center;
-  min-width: 150px;
+  width: 280px;
+  height: 140px;
   padding: 15px;
   border-radius: 0.25rem;
   font-weight: 700;
