@@ -1,3 +1,34 @@
+All Various File Converter Web Application 🌟
+
+Easily Convert Your Files with Modern Web Technologies
+
+This project is a powerful online file converter built using the Next.js framework, React.js, and JavaScript libraries like Multer and Sharp. Users can easily and intuitively convert various file formats and perform additional transformations.
+
+✨ Key Features
+Image Conversion and Resizing
+
+Convert images between formats like PNG, JPEG, WEBP, and more for downloading to local device. Adjust the size of your images as needed.
+
+Audio Extraction from Video
+
+Extract audio from video files and save it in formats like MP3 for easy use.
+
+Intuitive UI and Fast Processing
+
+Built with Tailwind CSS, this project provides a simple and user-friendly interface, ensuring fast and reliable file conversion.
+
+🛠️ Technology Stack Used
+
+Framework & Library: Next.js, React.js
+File Handling: Multer, Sharp
+Styling: Tailwind CSS
+
+🌐 Explore the Project
+You can visit and check the live version on https://all-converter-pi.vercel.app/
+
+This project is constantly being updated, with new features and improvements added regularly.
+Your interest and feedback are always welcome! 🙌
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
